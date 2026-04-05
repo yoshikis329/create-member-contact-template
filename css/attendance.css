@@ -1,0 +1,3 @@
+#result {
+    white-space: pre-wrap; /* 改行や空白をそのまま表示し、端で折り返す */
+}

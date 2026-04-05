@@ -3,52 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>出欠確認テンプレート作成</title>
-    <style>
-        #result {
-            white-space: pre-wrap; /* 改行や空白をそのまま表示し、端で折り返す */
-        }
-    </style>
-    <script>
-        const getDate = (dateStr) => {
-            const date = new Date(dateStr)
-            const days = ["日", "月", "火", "水", "木", "金", "土"];
-            return `${date.getMonth()+1}月${date.getDate()}日(${days[date.getDay()]})`
-        }
-
-        const placeUrlDict = {
-            "多摩川緑地野球場": "http://ball-boy.net/tokyo23/0506tamagawaryokuchihiroba.html",
-            "多摩川六郷橋緑地": "http://ball-boy.net/tokyo23/0507tamagawarokugobashi.html",
-            "多摩川ガス橋緑地野球場": "http://ball-boy.net/tokyo23/0503tamagawagasubashi.html",
-            "砧野球場（東名高速下）": "http://ball-boy.net/tokyo23/1402zhenyeqiucha.html",
-            "碑文谷公園": "http://ball-boy.net/tokyo23/2301himonya.html"
-        }
-
-        const createTemplate = () => {
-            const date = getDate(document.getElementById('date').value)
-            const startTime = document.getElementById('startTime').value
-            const firstGameEndTime = document.getElementById('firstGameEndTime').value
-            const secondGameEndTime = document.getElementById('secondGameEndTime').value
-            const expireDate = getDate(document.getElementById('expireDate').value)
-            const place = document.querySelector('input[name="place"]:checked').value
-            const placeName = place === 'その他' ? document.getElementById('customPlace').value : place
-            const placeURL = place === 'その他' ? document.getElementById('customPlaceURL').value : placeUrlDict[place]
-            const groundNumber = document.getElementById('groundNumber').value.trim()
-            const groundSuffix = groundNumber === '' ? '' : (/^[0-9０-９]+$/.test(groundNumber) ? '号面' : '面')
-            
-            const message = `
-            お疲れ様です。
-            来週の試合の出欠を確認します。
-
-            日時：${date} ${startTime}~${firstGameEndTime}${secondGameEndTime === '' ? '' : '~' + secondGameEndTime}
-            場所：${placeName}${groundNumber === '' ? '' : '（' + groundNumber + groundSuffix + '）'}
-            ${placeURL}
-
-            このメッセージが確認できましたら参加・不参加か記載の上、${expireDate}21:00までにご返信ください。
-            `
-            document.getElementById('result').textContent = message
-        }
-
-    </script>
+    <link rel="stylesheet" href="css/attendance.css">
+    <script src="js/common_script.js" defer></script>
+    <script src="js/attendance_script.js" defer></script>
 </head>
 <body>
     <h1>出欠確認作成</h1>
@@ -77,30 +34,7 @@
     <p id="result"> </p>
     
 
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-
-        // TODO: Firebaseコンソールからコピーした自分の設定に置き換えてください
-        const firebaseConfig = {
-            apiKey: "AIzaSyBHt3387MtvVeZxRhSVh0Ra8hXsWEekdYE",
-            authDomain: "create-template-login.firebaseapp.com",
-            projectId: "create-template-login",
-            storageBucket: "create-template-login.firebasestorage.app",
-            messagingSenderId: "546602104432",
-            appId: "1:546602104432:web:5ca1d4a532e235880e26b5",
-            measurementId: "G-FEM7PCZ9HN"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-
-        // ログイン状態の監視
-        onAuthStateChanged(auth, (user) => {
-            if (!user) {
-                location ='index.html'
-            }
-        });
-    </script>
+    <script src="js/firebase/common.js" type="module"></script>
+    <script src="js/firebase/authpage.js" type="module"></script>
 </body>
 </html>
