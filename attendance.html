@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>出欠確認テンプレート作成</title>
+    <style>
+        #result {
+            white-space: pre-wrap; /* 改行や空白をそのまま表示し、端で折り返す */
+        }
+    </style>
+    <script>
+        const getDate = (dateStr) => {
+            const date = new Date(dateStr)
+            const days = ["日", "月", "火", "水", "木", "金", "土"];
+            return `${date.getMonth()+1}月${date.getDate()}日(${days[date.getDay()]})`
+        }
+
+        const createTemplate = () => {
+            const date = getDate(document.getElementById('date').value)
+            const startTime = document.getElementById('startTime').value
+            const firstGameEndTime = document.getElementById('firstGameEndTime').value
+            const secondGameEndTime = document.getElementById('secondGameEndTime').value
+            const expireDate = getDate(document.getElementById('expireDate').value)
+            
+            const message = `
+            お疲れ様です。
+            来週の試合の出欠を確認します。
+
+            日時：${date} ${startTime}~${firstGameEndTime}${secondGameEndTime === '' ? '' : '~' + secondGameEndTime}
+            場所：<場所>
+            <URL>
+
+            このメッセージが確認できましたら参加・不参加か記載の上、${expireDate}21:00までにご返信ください。
+            `
+            document.getElementById('result').textContent = message
+        }
+
+    </script>
+</head>
+<body>
+    <h1>出欠確認作成</h1>
+    <p>日時：<input type="date" id="date"></p>
+    <p>1試合目開始時刻：<input type="time" id="startTime"></p>
+    <p>1試合目終了時刻：<input type="time" id="firstGameEndTime"></p>
+    <p>2試合目終了時刻（ダブルヘッダーのみ）：<input type="time" id="secondGameEndTime"></p>
+    <p>期日：<input type="date" id="expireDate"></p>
+    <button onClick="createTemplate()">作成</button>
+    <p id="result"> </p>
+    
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+        // TODO: Firebaseコンソールからコピーした自分の設定に置き換えてください
+        const firebaseConfig = {
+            apiKey: "AIzaSyBHt3387MtvVeZxRhSVh0Ra8hXsWEekdYE",
+            authDomain: "create-template-login.firebaseapp.com",
+            projectId: "create-template-login",
+            storageBucket: "create-template-login.firebasestorage.app",
+            messagingSenderId: "546602104432",
+            appId: "1:546602104432:web:5ca1d4a532e235880e26b5",
+            measurementId: "G-FEM7PCZ9HN"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // ログイン状態の監視
+        onAuthStateChanged(auth, (user) => {
+            if (!user) {
+                location ='index.html'
+            }
+        });
+    </script>
+</body>
+</html>
