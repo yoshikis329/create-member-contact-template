@@ -1,4 +1,5 @@
 import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { auth } from "./common.js";
 
 // ログイン状態の監視
 onAuthStateChanged(auth, (user) => {
