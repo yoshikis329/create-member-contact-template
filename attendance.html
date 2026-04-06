@@ -2,36 +2,82 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>出欠確認テンプレート作成</title>
     <link rel="stylesheet" href="css/attendance.css">
     <script src="js/common_script.js" defer></script>
     <script src="js/attendance_script.js" defer></script>
 </head>
 <body>
-    <h1>出欠確認作成</h1>
-    <form>
-        <p>日時：<input type="date" id="date"></p>
-        <p>1試合目開始時刻：<input type="time" id="startTime"></p>
-        <p>1試合目終了時刻：<input type="time" id="firstGameEndTime"></p>
-        <p>2試合目終了時刻（ダブルヘッダーのみ）：<input type="time" id="secondGameEndTime"></p>
+    <main class="page-shell">
+        <section class="form-card">
+            <p class="eyebrow">Attendance Template</p>
+            <h1>出欠確認作成</h1>
+            <p class="lead">日程と場所を入力すると、共有用のテンプレートをすぐに作成できます。</p>
 
-        <fieldset>
-            <legend>場所：</legend>
-            <label><input type="radio" name="place" value="多摩川緑地野球場" checked>多摩川緑地</label>
-            <label><input type="radio" name="place" value="多摩川六郷橋緑地">六郷橋緑地</label>
-            <label><input type="radio" name="place" value="多摩川ガス橋緑地野球場">ガス橋緑地</label>
-            <label><input type="radio" name="place" value="砧野球場（東名高速下）">砧野球場</label>
-            <label><input type="radio" name="place" value="碑文谷公園">碑文谷公園</label>
-            <label><input type="radio" name="place" value="その他">その他</label>
-            <input type="text" id="customPlace" placeholder="その他の場所を入力">
-            <input type="text" id="customPlaceURL" placeholder="その他の場所のURLを入力">
-        </fieldset>
+            <form class="template-form">
+                <label class="field-row">
+                    <span>日時</span>
+                    <input type="date" id="date">
+                </label>
 
-        <p>グラウンドの号面：<input type="text" id="groundNumber" placeholder="号面を入力"></p>
-        <p>期日：<input type="date" id="expireDate"></p>
-        <button type="button" onClick="createTemplate()">作成</button>
-    </form>
-    <p id="result"> </p>
+                <div class="time-grid">
+                    <label class="field-row">
+                        <span>1試合目開始</span>
+                        <input type="time" id="startTime">
+                    </label>
+                    <label class="field-row">
+                        <span>1試合目終了</span>
+                        <input type="time" id="firstGameEndTime">
+                    </label>
+                    <label class="field-row full-width">
+                        <span>2試合目終了</span>
+                        <input type="time" id="secondGameEndTime">
+                    </label>
+                </div>
+
+                <fieldset class="place-section">
+                    <legend>場所</legend>
+                    <div class="radio-grid">
+                        <label class="choice-chip"><input type="radio" name="place" value="多摩川緑地野球場" checked><span>多摩川緑地</span></label>
+                        <label class="choice-chip"><input type="radio" name="place" value="多摩川六郷橋緑地"><span>六郷橋緑地</span></label>
+                        <label class="choice-chip"><input type="radio" name="place" value="多摩川ガス橋緑地野球場"><span>ガス橋緑地</span></label>
+                        <label class="choice-chip"><input type="radio" name="place" value="砧野球場（東名高速下）"><span>砧野球場</span></label>
+                        <label class="choice-chip"><input type="radio" name="place" value="碑文谷公園"><span>碑文谷公園</span></label>
+                        <label class="choice-chip"><input type="radio" name="place" value="その他"><span>その他</span></label>
+                    </div>
+                    <div class="custom-place-grid">
+                        <label class="field-row">
+                            <span>その他の場所</span>
+                            <input type="text" id="customPlace" placeholder="場所名を入力">
+                        </label>
+                        <label class="field-row">
+                            <span>URL</span>
+                            <input type="text" id="customPlaceURL" placeholder="場所のURLを入力">
+                        </label>
+                    </div>
+                </fieldset>
+
+                <div class="details-grid">
+                    <label class="field-row">
+                        <span>グラウンドの号面</span>
+                        <input type="text" id="groundNumber" placeholder="号面を入力">
+                    </label>
+                    <label class="field-row">
+                        <span>回答期限</span>
+                        <input type="date" id="expireDate">
+                    </label>
+                </div>
+
+                <button class="primary-action" type="button" onClick="createTemplate()">テンプレートを作成</button>
+            </form>
+
+            <section class="result-card" aria-live="polite">
+                <p class="result-label">生成結果</p>
+                <p id="result"></p>
+            </section>
+        </section>
+    </main>
     
 
     <script src="js/firebase/authpage.js" type="module"></script>
