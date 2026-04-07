@@ -1,4 +1,14 @@
+const subtractMinutes = (timeStr, mins) => {
+    const [hours, minutes] = timeStr.split(':').map(Number)
+    let totalMinutes = hours * 60 + minutes - mins
+    if (totalMinutes < 0) totalMinutes += 24 * 60
+    const newHours = Math.floor(totalMinutes / 60) % 24
+    const newMinutes = totalMinutes % 60
+    return `${String(newHours).padStart(2, '0')}:${String(newMinutes).padStart(2, '0')}`
+}
+
 window.createTemplate = () => {
+    document.getElementById('result').textContent = ''
     const date = window.getDate(document.getElementById('date').value)
     const startTime = document.getElementById('startTime').value
     const firstGameEndTime = document.getElementById('firstGameEndTime').value
@@ -8,15 +18,6 @@ window.createTemplate = () => {
     const placeURL = place === 'その他' ? document.getElementById('customPlaceURL').value.trim() : window.placeUrlDict[place]
     const groundNumber = document.getElementById('groundNumber').value.trim()
     const groundSuffix = groundNumber === '' ? '' : (/^[0-9０-９]+$/.test(groundNumber) ? '号面' : '面')
-    
-    const subtractMinutes = (timeStr, mins) => {
-        const [hours, minutes] = timeStr.split(':').map(Number)
-        let totalMinutes = hours * 60 + minutes - mins
-        if (totalMinutes < 0) totalMinutes += 24 * 60
-        const newHours = Math.floor(totalMinutes / 60) % 24
-        const newMinutes = totalMinutes % 60
-        return `${String(newHours).padStart(2, '0')}:${String(newMinutes).padStart(2, '0')}`
-    }
     
     const meetingTime = subtractMinutes(startTime, 30)
     const telStartTime = subtractMinutes(startTime, 150)

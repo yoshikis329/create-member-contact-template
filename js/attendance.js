@@ -1,4 +1,5 @@
 window.createTemplate = () => {
+    document.getElementById('result').textContent = ''
     const date = window.getDate(document.getElementById('date').value)
     const startTime = document.getElementById('startTime').value
     const firstGameEndTime = document.getElementById('firstGameEndTime').value

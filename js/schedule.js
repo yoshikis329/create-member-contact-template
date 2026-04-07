@@ -99,6 +99,7 @@ const getScheduleLine = (block) => {
 }
 
 window.createTemplate = () => {
+    document.getElementById('result').textContent = ''
     const blocks = Array.from(document.querySelectorAll('.schedule-block'))
     const scheduleBody = blocks.map((block) => getScheduleLine(block)).join('\n\n')
     const firstDateValue = blocks[0]?.querySelector('.date-input')?.value || ''
