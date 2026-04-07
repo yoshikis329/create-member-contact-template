@@ -17,27 +17,27 @@
 
             <form class="template-form">
                 <label class="field-row">
-                    <span>日時</span>
+                    <span>試合日時</span>
                     <input type="date" id="date">
                 </label>
 
                 <div class="time-grid">
                     <label class="field-row">
-                        <span>1試合目開始</span>
+                        <span>1試合目開始時刻</span>
                         <input type="time" id="startTime">
                     </label>
                     <label class="field-row">
-                        <span>1試合目終了</span>
+                        <span>1試合目終了時刻</span>
                         <input type="time" id="firstGameEndTime">
                     </label>
                     <label class="field-row full-width">
-                        <span>2試合目終了</span>
+                        <span>2試合目終了時刻</span>
                         <input type="time" id="secondGameEndTime">
                     </label>
                 </div>
 
                 <fieldset class="place-section">
-                    <legend>場所</legend>
+                    <legend>グラウンド</legend>
                     <div class="radio-grid">
                         <label class="choice-chip"><input type="radio" name="place" value="多摩川緑地野球場" checked><span>多摩川緑地</span></label>
                         <label class="choice-chip"><input type="radio" name="place" value="多摩川六郷橋緑地"><span>六郷橋緑地</span></label>
@@ -46,14 +46,14 @@
                         <label class="choice-chip"><input type="radio" name="place" value="碑文谷公園"><span>碑文谷公園</span></label>
                         <label class="choice-chip"><input type="radio" name="place" value="その他"><span>その他</span></label>
                     </div>
-                    <div class="custom-place-grid">
+                    <div class="custom-place-grid is-hidden" id="customPlaceGrid" aria-hidden="true">
                         <label class="field-row">
                             <span>その他の場所</span>
-                            <input type="text" id="customPlace" placeholder="場所名を入力">
+                            <input type="text" id="customPlace" placeholder="場所名を入力" disabled>
                         </label>
                         <label class="field-row">
-                            <span>URL</span>
-                            <input type="text" id="customPlaceURL" placeholder="場所のURLを入力">
+                            <span>その他の場所のURL</span>
+                            <input type="text" id="customPlaceURL" placeholder="場所のURLを入力" disabled>
                         </label>
                     </div>
                 </fieldset>

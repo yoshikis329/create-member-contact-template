@@ -131,6 +131,10 @@ input:focus {
     grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.custom-place-grid.is-hidden {
+    display: none;
+}
+
 .full-width {
     grid-column: 1 / -1;
 }
