@@ -99,7 +99,11 @@ const getScheduleLine = (block) => {
     const placeURL = place === 'その他' ? customPlaceURL : window.placeUrlDict[place]
     const groundNumber = block.querySelector('.ground-number-input').value.trim()
 
-    return `日時：${date} ${startTime}~${firstGameEndTime}${secondGameEndTime === '' ? '' : '~' + secondGameEndTime}\n場所：${placeName}${formatGround(groundNumber)}\n${placeURL}`
+    return `
+    日時：${date} ${startTime}~${firstGameEndTime}${secondGameEndTime === '' ? '' : '~' + secondGameEndTime}
+    場所：${placeName}${formatGround(groundNumber)}
+    ${placeURL}
+    `
 }
 
 window.createTemplate = () => {
