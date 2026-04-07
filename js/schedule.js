@@ -50,14 +50,6 @@ const clearScheduleBlockInputs = (block) => {
     block.querySelectorAll('input[type="date"], input[type="time"], input[type="text"]').forEach((input) => {
         input.value = ''
     })
-
-    const radios = block.querySelectorAll('input[type="radio"]')
-    radios.forEach((radio) => {
-        radio.checked = false
-    })
-    if (radios.length > 0) {
-        radios[0].checked = true
-    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
