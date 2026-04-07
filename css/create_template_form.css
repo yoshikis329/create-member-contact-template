@@ -85,6 +85,23 @@ h1 {
     gap: 22px;
 }
 
+#scheduleBlocks {
+    display: grid;
+    gap: 18px;
+}
+
+.schedule-block + .schedule-block {
+    border-top: 1px dashed rgba(82, 112, 106, 0.3);
+    padding-top: 18px;
+}
+
+.schedule-block-title {
+    margin: 0 0 10px;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent-strong);
+}
+
 .field-row {
     display: grid;
     gap: 8px;
@@ -219,6 +236,28 @@ input:focus {
     transform: translateY(0);
 }
 
+.action-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.action-row .primary-action {
+    flex: 1;
+}
+
+.secondary-action {
+    min-height: 54px;
+    padding: 0 22px;
+    border: 1px solid rgba(31, 122, 106, 0.36);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--accent-strong);
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
 .result-card {
     margin-top: 22px;
     padding: 18px;
@@ -257,6 +296,15 @@ input:focus {
     .custom-place-grid,
     .radio-grid {
         grid-template-columns: 1fr;
+    }
+
+    .action-row {
+        flex-direction: column;
+    }
+
+    .secondary-action,
+    .action-row .primary-action {
+        width: 100%;
     }
 
     .place-section {

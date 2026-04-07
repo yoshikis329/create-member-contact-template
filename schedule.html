@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>予定共有テンプレート作成</title>
+    <link rel="stylesheet" href="css/create_template_form.css">
+    <script src="js/common.js" defer></script>
+    <script src="js/schedule.js" defer></script>
+</head>
+<body>
+    <main class="page-shell">
+        <section class="form-card">
+            <p class="eyebrow">Share Schedule Template</p>
+            <h1>予定共有作成</h1>
+            <p class="lead">日程と場所を入力すると、共有用のテンプレートをすぐに作成できます。</p>
+
+            <form class="template-form">
+                <div id="scheduleBlocks">
+                    <section class="schedule-block" data-index="1">
+                        <p class="schedule-block-title">1試合目</p>
+                        <label class="field-row">
+                            <span>試合日時</span>
+                            <input type="date" class="date-input">
+                        </label>
+
+                        <div class="time-grid">
+                            <label class="field-row">
+                                <span>第1試合開始時刻</span>
+                                <input type="time" class="start-time-input">
+                            </label>
+                            <label class="field-row">
+                                <span>第1試合終了時刻</span>
+                                <input type="time" class="first-game-end-time-input">
+                            </label>
+                            <label class="field-row full-width">
+                                <span>第2試合終了時刻</span>
+                                <input type="time" class="second-game-end-time-input">
+                            </label>
+                        </div>
+
+                        <fieldset class="place-section">
+                            <legend>グラウンド</legend>
+                            <div class="radio-grid">
+                                <label class="choice-chip"><input type="radio" value="多摩川緑地野球場" checked><span>多摩川緑地</span></label>
+                                <label class="choice-chip"><input type="radio" value="多摩川六郷橋緑地"><span>六郷橋緑地</span></label>
+                                <label class="choice-chip"><input type="radio" value="多摩川ガス橋緑地野球場"><span>ガス橋緑地</span></label>
+                                <label class="choice-chip"><input type="radio" value="砧野球場（東名高速下）"><span>砧野球場</span></label>
+                                <label class="choice-chip"><input type="radio" value="碑文谷公園"><span>碑文谷公園</span></label>
+                                <label class="choice-chip"><input type="radio" value="その他"><span>その他</span></label>
+                            </div>
+                            <div class="custom-place-grid is-hidden" aria-hidden="true">
+                                <label class="field-row">
+                                    <span>その他の場所</span>
+                                    <input type="text" class="custom-place-input" placeholder="場所名を入力" disabled>
+                                </label>
+                                <label class="field-row">
+                                    <span>その他の場所のURL</span>
+                                    <input type="text" class="custom-place-url-input" placeholder="場所のURLを入力" disabled>
+                                </label>
+                            </div>
+                            <label class="field-row">
+                                <span>グラウンドの号面</span>
+                                <input type="text" class="ground-number-input" placeholder="号面を入力">
+                            </label>
+                        </fieldset>
+                    </section>
+                </div>
+
+                <div class="details-grid">
+                    <label class="field-row">
+                        <span>回答期限</span>
+                        <input type="date" id="expireDate">
+                    </label>
+                </div>
+
+                <div class="action-row">
+                    <button class="secondary-action" id="addScheduleBlock" type="button">追加</button>
+                    <button class="primary-action" type="button" onClick="createTemplate()">テンプレートを作成</button>
+                </div>
+            </form>
+
+            <section class="result-card" aria-live="polite">
+                <p class="result-label">生成結果</p>
+                <p id="result"></p>
+            </section>
+        </section>
+    </main>
+    
+
+    <script src="js/firebase/authpage.js" type="module"></script>
+</body>
+</html>
