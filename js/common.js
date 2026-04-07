@@ -11,3 +11,31 @@ window.getDate = (dateStr) => {
     const days = ["日", "月", "火", "水", "木", "金", "土"];
     return `${date.getMonth()+1}月${date.getDate()}日(${days[date.getDay()]})`
 }
+
+const toggleCustomPlaceFields = () => {
+    const selectedPlace = document.querySelector('input[name="place"]:checked')
+    const isCustomPlace = selectedPlace?.value === 'その他'
+    const customPlaceGrid = document.getElementById('customPlaceGrid')
+    const customPlaceInput = document.getElementById('customPlace')
+    const customPlaceURLInput = document.getElementById('customPlaceURL')
+
+    customPlaceGrid.classList.toggle('is-hidden', !isCustomPlace)
+    customPlaceGrid.setAttribute('aria-hidden', String(!isCustomPlace))
+
+    customPlaceInput.disabled = !isCustomPlace
+    customPlaceURLInput.disabled = !isCustomPlace
+    customPlaceInput.required = isCustomPlace
+    customPlaceURLInput.required = isCustomPlace
+
+    if (!isCustomPlace) {
+        customPlaceInput.value = ''
+        customPlaceURLInput.value = ''
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('input[name="place"]').forEach((radio) => {
+        radio.addEventListener('change', toggleCustomPlaceFields)
+    })
+    toggleCustomPlaceFields()
+})
