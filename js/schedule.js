@@ -111,6 +111,7 @@ window.createTemplate = () => {
     const scheduleBody = blocks.map((block) => getScheduleLine(block)).join('\n\n')
     const firstDateValue = blocks[0]?.querySelector('.date-input')?.value || ''
     const monthText = firstDateValue !== '' ? `${Number(firstDateValue.split('-')[1])}月` : '今後'
+    const expireDate = window.getDate(document.getElementById('expireDate').value)
 
     const message = `
     お疲れ様です。
@@ -119,7 +120,7 @@ window.createTemplate = () => {
 
     ${scheduleBody}
 
-    このメッセージが確認できましたらご返信ください。
+    このメッセージが確認できましたら${expireDate}までにご返信ください。
     `
     document.getElementById('result').textContent = message
 }
