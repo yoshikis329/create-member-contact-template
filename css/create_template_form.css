@@ -269,7 +269,7 @@ input:focus {
 #result {
     margin: 10px 0 0;
     min-height: 3.5rem;
-    white-space: pre-wrap;
+    white-space: pre-line;
     overflow-wrap: anywhere;
     color: var(--text-main);
     line-height: 1.7;
