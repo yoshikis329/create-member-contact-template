@@ -3,7 +3,8 @@ window.placeUrlDict = {
     "多摩川六郷橋緑地": "https://www.city.ota.tokyo.jp/shisetsu/sports/baseball/tamagawa_rokugoubashi.html",
     "多摩川ガス橋緑地野球場": "https://www.city.ota.tokyo.jp/shisetsu/sports/baseball/tamagawa_gasbashi.html",
     "砧野球場（東名高速下）": "https://www.city.meguro.tokyo.jp/sports/shisetsu/sports/kinuta_ground.html",
-    "碑文谷公園": "https://www.city.meguro.tokyo.jp/sports/shisetsu/sports/himonya_gym.html"
+    "碑文谷公園": "https://www.city.meguro.tokyo.jp/sports/shisetsu/sports/himonya_gym.html",
+    "猿江恩賜公園野球場": "https://tokyo-eastpark.com/parksearch/sarueonshi#parkmap-9"
 }
 
 window.getDate = (dateStr) => {
