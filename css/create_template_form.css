@@ -268,11 +268,19 @@ input:focus {
 
 #result {
     margin: 10px 0 0;
-    min-height: 3.5rem;
-    white-space: pre-line;
+    width: 100%;
+    min-height: 10rem;
     overflow-wrap: anywhere;
     color: var(--text-main);
     line-height: 1.7;
+    resize: vertical;
+    background: transparent;
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: text;
 }
 
 @media (max-width: 820px) {
