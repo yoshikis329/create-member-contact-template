@@ -107,13 +107,13 @@ window.createTemplate = () => {
     const expireDate = window.getDate(document.getElementById('expireDate').value)
 
     const message = `
-    お疲れ様です。
+お疲れ様です。
 
-    ${monthText}の予定が決まりましたので連絡します。
+${monthText}の予定が決まりましたので連絡します。
 
-    ${scheduleBody}
+${scheduleBody}
 
-    このメッセージが確認できましたら${expireDate}までにご返信ください。
-    `.trim()
+このメッセージが確認できましたら${expireDate}までにご返信ください。
+`.trim()
     document.getElementById('result').textContent = message
 }

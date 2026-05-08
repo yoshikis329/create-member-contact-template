@@ -12,14 +12,14 @@ window.createTemplate = () => {
     const groundSuffix = groundNumber === '' ? '' : (/^[0-9０-９]+$/.test(groundNumber) ? '号面' : '面')
     
     const message = `
-    お疲れ様です。
-    来週の試合の出欠を確認します。
+お疲れ様です。
+来週の試合の出欠を確認します。
 
-    日時：${date} ${startTime}~${firstGameEndTime}${secondGameEndTime === '' ? '' : '~' + secondGameEndTime}
-    場所：${placeName}${groundNumber === '' ? '' :  groundNumber + groundSuffix}
-    ${placeURL}
+日時：${date} ${startTime}~${firstGameEndTime}${secondGameEndTime === '' ? '' : '~' + secondGameEndTime}
+場所：${placeName}${groundNumber === '' ? '' :  groundNumber + groundSuffix}
+${placeURL}
 
-    このメッセージが確認できましたら参加・不参加か記載の上、${expireDate}21:00までにご返信ください。
-    `.trim()
+このメッセージが確認できましたら参加・不参加か記載の上、${expireDate}21:00までにご返信ください。
+`.trim()
     document.getElementById('result').textContent = message
 }

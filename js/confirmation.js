@@ -24,17 +24,17 @@ window.createTemplate = () => {
     const telEndTime = subtractMinutes(startTime, 120)
     
     const message = `
-    お疲れ様です。
-    ${date}の当日詳細をご連絡します。
+お疲れ様です。
+${date}の当日詳細をご連絡します。
 
-    日時：${date} ${startTime}~${firstGameEndTime}${secondGameEndTime === '' ? '' : '~' + secondGameEndTime}
-    場所：${placeName}${groundNumber === '' ? '' :  groundNumber + groundSuffix}
-    ${placeURL}
+日時：${date} ${startTime}~${firstGameEndTime}${secondGameEndTime === '' ? '' : '~' + secondGameEndTime}
+場所：${placeName}${groundNumber === '' ? '' :  groundNumber + groundSuffix}
+${placeURL}
 
-    ${meetingTime}ごろにはグラウンドに集まるようお願いします。
-    当日は${telStartTime}〜${telEndTime}までの間にご連絡ください。
+${meetingTime}ごろにはグラウンドに集まるようお願いします。
+当日は${telStartTime}〜${telEndTime}までの間にご連絡ください。
 
-    このメッセージが確認できましたらご返信ください。
-    `.trim()
+このメッセージが確認できましたらご返信ください。
+`.trim()
     document.getElementById('result').textContent = message
 }
