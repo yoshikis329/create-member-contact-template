@@ -35,6 +35,6 @@ window.createTemplate = () => {
     当日は${telStartTime}〜${telEndTime}までの間にご連絡ください。
 
     このメッセージが確認できましたらご返信ください。
-    `
+    `.trim()
     document.getElementById('result').textContent = message
 }

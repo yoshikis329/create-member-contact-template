@@ -20,6 +20,6 @@ window.createTemplate = () => {
     ${placeURL}
 
     このメッセージが確認できましたら参加・不参加か記載の上、${expireDate}21:00までにご返信ください。
-    `
+    `.trim()
     document.getElementById('result').textContent = message
 }

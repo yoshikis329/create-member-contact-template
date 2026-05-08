@@ -114,6 +114,6 @@ window.createTemplate = () => {
     ${scheduleBody}
 
     このメッセージが確認できましたら${expireDate}までにご返信ください。
-    `
+    `.trim()
     document.getElementById('result').textContent = message
 }
