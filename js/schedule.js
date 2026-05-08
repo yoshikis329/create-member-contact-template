@@ -92,10 +92,10 @@ const getScheduleLine = (block) => {
     const groundNumber = block.querySelector('.ground-number-input').value.trim()
 
     return `
-    日時：${date} ${startTime}~${firstGameEndTime}${secondGameEndTime === '' ? '' : '~' + secondGameEndTime}
-    場所：${placeName}${formatGround(groundNumber)}
-    ${placeURL}
-    `
+        日時：${date} ${startTime}~${firstGameEndTime}${secondGameEndTime === '' ? '' : '~' + secondGameEndTime}
+        場所：${placeName}${formatGround(groundNumber)}
+        ${placeURL}
+        `.replace(/^[ \t]+(?=\S)/gm, '').trim()
 }
 
 window.createTemplate = () => {
@@ -107,13 +107,13 @@ window.createTemplate = () => {
     const expireDate = window.getDate(document.getElementById('expireDate').value)
 
     const message = `
-お疲れ様です。
-
-${monthText}の予定が決まりましたので連絡します。
-
-${scheduleBody}
-
-このメッセージが確認できましたら${expireDate}までにご返信ください。
-`.trim()
+        お疲れ様です。
+        
+        ${monthText}の予定が決まりましたので連絡します。
+        
+        ${scheduleBody}
+        
+        このメッセージが確認できましたら${expireDate}までにご返信ください。
+    `.replace(/^[ \t]+(?=\S)/gm, '').trim()
     document.getElementById('result').textContent = message
 }
