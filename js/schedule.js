@@ -114,6 +114,8 @@ window.createTemplate = () => {
         ${scheduleBody}
         
         このメッセージが確認できましたら${expireDate}までにご返信ください。
+
+        運営部
     `.replace(/^[ \t]+(?=\S)/gm, '').trim()
     document.getElementById('result').textContent = message
 }
